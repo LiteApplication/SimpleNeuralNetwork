@@ -28,10 +28,11 @@ class SimpleNeuralNetwork():
 
 if __name__ == "__main__":
     print("Computing...")
-    neural_network = SimpleNeuralNetwork(len([[int(j) for j in list(i.replace("\n", "")[:-2])] for i in open("data.txt").readlines() if not i[0]=="#"][0]), 1, 0)
-    training_inputs = numpy.array([[int(j) for j in list(i.replace("\n", "")[:-2])] for i in open("data.txt").readlines() if not i[0]=="#"])
+    data_list = open("data.txt").readlines()
+    neural_network = SimpleNeuralNetwork(len([[int(j) for j in list(i.replace("\n", "")[:-2])] for i in data_list if not i[0]=="#"][0]), 1, 0)
+    training_inputs = numpy.array([[int(j) for j in list(i.replace("\n", "")[:-2])] for i in data_list if not i[0]=="#"])
 
-    training_outputs = numpy.array([[int(i.replace("\n", "")[-1]) for i in open("data.txt").readlines() if not i[0]=="#"]]).T
+    training_outputs = numpy.array([[int(i.replace("\n", "")[-1]) for i in data_list if not i[0]=="#"]]).T
     neural_network.trainer(training_inputs, training_outputs, 1500)
     user_input = [int(c) for c in input("New Input Data : ")]
     
