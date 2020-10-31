@@ -1,0 +1,7 @@
+# The logic behind that list is that the solution
+# is the opposite of the first number of the list
+1100 0
+0111 1
+1101 0
+0010 1
+1111 0
