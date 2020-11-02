@@ -1,7 +1,12 @@
 # The logic behind that list is that the solution
 # is the opposite of the first number of the list
-1100 0
-0111 1
-1101 0
-0010 1
-1111 0
+
+# Data in CSV format, without the result :
+1,1,0,0
+0,1,1,1
+1,1,0,1
+0,0,1,0
+1,1,1,1
+
+# The result is here :
+0,1,0,1,0
