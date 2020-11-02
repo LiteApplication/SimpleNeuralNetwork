@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import numpy
+import numpy, csv
 
 class SimpleNeuralNetwork():
     def __init__(self,number_values ,max_value, min_value):
@@ -28,11 +28,15 @@ class SimpleNeuralNetwork():
 
 if __name__ == "__main__":
     print("Computing...")
-    data_list = open("data.txt").readlines()
-    neural_network = SimpleNeuralNetwork(len([[int(j) for j in list(i.replace("\n", "")[:-2])] for i in data_list if not i[0]=="#"][0]), 1, 0)
-    training_inputs = numpy.array([[int(j) for j in list(i.replace("\n", "")[:-2])] for i in data_list if not i[0]=="#"])
+    data_file = open("data.txt")
+    data = [i for i in csv.reader(data_file) if i or i[0]=="#"]
 
-    training_outputs = numpy.array([[int(i.replace("\n", "")[-1]) for i in data_list if not i[0]=="#"]]).T
+    data = [[int(j) for j in i] for i in data] # Convert to int
+
+    neural_network = SimpleNeuralNetwork(len(data[0]), 1, 0)
+    training_inputs = numpy.array(data[:-1])
+    training_outputs = numpy.array([data[-1]]).T
+
     neural_network.trainer(training_inputs, training_outputs, 1500)
     user_input = [int(c) for c in input("New Input Data : ")]
     
@@ -40,5 +44,4 @@ if __name__ == "__main__":
     print("New Output data: ")
     new_output = neural_network.think(numpy.array(user_input))
     print(new_output)
-    print("Solution is :")
-    print(int(round(new_output[0])))
+    print("Solution is :", str(round(new_output[0])))
