@@ -26,7 +26,7 @@ class SimpleNeuralNetwork():
         inputs = inputs.astype(float) #converting values to floats
         return self.sigmoid(numpy.dot(inputs, self.synaptic_weights))
 
-if __name__ == "__main__":
+def test():
     print("Computing...")
     data_file = open("data.txt")
     data = [i for i in csv.reader(data_file) if i ]
@@ -46,3 +46,6 @@ if __name__ == "__main__":
     new_output = neural_network.think(numpy.array(user_input))
     print(new_output)
     print("Solution is :", str(round(new_output[0])))
+
+if __name__ == "__main__":
+    test()
