@@ -43,9 +43,10 @@ def test():
     
     print("Considering New Situation: ", user_input)
     print("New Output data: ")
-    new_output = neural_network.think(numpy.array(user_input))
+    new_output = list(neural_network.think(numpy.array(user_input)))[0]
     print(new_output)
-    print("Solution is :", str(round(new_output[0])))
+    print("Rounded solution is :", str(round(new_output)))
+    print("I am", str(round(100 - abs(100*(round(new_output)-new_output)))) + "%", "sure")
 
 if __name__ == "__main__":
     test()
