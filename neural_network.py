@@ -29,7 +29,8 @@ class SimpleNeuralNetwork():
 if __name__ == "__main__":
     print("Computing...")
     data_file = open("data.txt")
-    data = [i for i in csv.reader(data_file) if i or i[0]=="#"]
+    data = [i for i in csv.reader(data_file) if i ]
+    data = [ i for i in data if not i[0].startswith("#")]
 
     data = [[int(j) for j in i] for i in data] # Convert to int
 
